@@ -1,0 +1,104 @@
+/* NIRVANA site — 共通スタイル
+   レイアウト: 1カラム・最大 880px、藍色(インディゴ)と和紙色の2色＋朱の差し色 */
+:root {
+  --paper: #f7f6f2;
+  --ink: #1b2233;
+  --indigo: #1f3a5f;
+  --indigo-deep: #16293f;
+  --mist: #dfe3ea;
+  --muted: #5a6475;
+  --vermilion: #b7412c;
+  --card: #ffffff;
+  --display: "Shippori Mincho B1", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  --body: "Noto Sans JP", "Hiragino Sans", "Yu Gothic", system-ui, sans-serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #121722; --ink: #e8eaf0; --indigo: #9db4d6; --indigo-deep: #0d1420;
+    --mist: #2a3344; --muted: #a3acbc; --vermilion: #e07a62; --card: #1a2130; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #121722; --ink: #e8eaf0; --indigo: #9db4d6; --indigo-deep: #0d1420;
+  --mist: #2a3344; --muted: #a3acbc; --vermilion: #e07a62; --card: #1a2130; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0; background: var(--paper); color: var(--ink);
+  font-family: var(--body); font-size: 16px; line-height: 1.9;
+  font-feature-settings: "palt";
+}
+a { color: var(--indigo); text-underline-offset: .2em; }
+a:focus-visible { outline: 2px solid var(--vermilion); outline-offset: 2px; }
+.wrap {
+  max-width: 880px; margin: 0 auto;
+  padding-left: max(20px, env(safe-area-inset-left, 0px));
+  padding-right: max(20px, env(safe-area-inset-right, 0px));
+}
+
+/* ヘッダー */
+.site-head { border-bottom: 1px solid var(--mist); }
+.site-head .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px; padding-block: 18px; }
+.brand { font-family: var(--display); font-size: 1.35rem; letter-spacing: .18em; text-decoration: none; color: var(--ink); }
+.brand small { display: block; font-family: var(--body); font-size: .72rem; letter-spacing: .08em; color: var(--muted); }
+.site-nav { display: flex; flex-wrap: wrap; gap: 6px 20px; font-size: .9rem; }
+.site-nav a { text-decoration: none; color: var(--muted); }
+.site-nav a:hover { color: var(--indigo); }
+
+/* ヒーロー */
+.hero { background: var(--indigo-deep); color: #f3f1ea; }
+.hero .wrap { padding-block: 64px 56px; }
+.hero .eyebrow { font-size: .78rem; letter-spacing: .22em; text-transform: uppercase; color: #c9b27c; margin: 0 0 14px; }
+.hero h1 { font-family: var(--display); font-weight: 500; font-size: clamp(1.7rem, 4.2vw, 2.6rem); line-height: 1.35; margin: 0 0 10px; text-wrap: balance; }
+.hero .sub { font-family: var(--display); font-size: clamp(1.05rem, 2.2vw, 1.3rem); color: #d8d4c6; margin: 0 0 22px; }
+.hero p.lead { max-width: 60ch; margin: 0; color: #e6e3d8; }
+
+/* セクション */
+main .wrap { padding-block: 48px 72px; display: grid; gap: 56px; }
+section > h2 { font-family: var(--display); font-weight: 500; font-size: 1.45rem; margin: 0 0 6px; letter-spacing: .04em; }
+section > .en { font-size: .8rem; letter-spacing: .18em; text-transform: uppercase; color: var(--vermilion); margin: 0 0 20px; }
+
+/* 会社概要 表 */
+.profile { width: 100%; border-collapse: collapse; }
+.profile th, .profile td { text-align: left; vertical-align: top; padding: 12px 8px; border-top: 1px solid var(--mist); }
+.profile tr:last-child th, .profile tr:last-child td { border-bottom: 1px solid var(--mist); }
+.profile th { width: 11em; font-weight: 600; color: var(--muted); font-size: .92rem; white-space: nowrap; }
+.profile th span { display: block; font-weight: 400; font-size: .72rem; letter-spacing: .06em; }
+@media (max-width: 560px) {
+  .profile th, .profile td { display: block; padding: 6px 0; border: 0; }
+  .profile th { padding-top: 14px; border-top: 1px solid var(--mist); width: auto; }
+  .profile tr:last-child td { border-bottom: 1px solid var(--mist); padding-bottom: 14px; }
+}
+
+/* 事業カード */
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; }
+.card { background: var(--card); border: 1px solid var(--mist); padding: 22px 22px 20px; min-width: 0; }
+.card h3 { font-family: var(--display); font-weight: 500; font-size: 1.12rem; margin: 0 0 4px; }
+.card .en { font-size: .74rem; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin: 0 0 12px; }
+.card p { margin: 0; font-size: .95rem; }
+.card ul { margin: 10px 0 0; padding-left: 1.2em; font-size: .92rem; color: var(--muted); }
+
+/* 約束 */
+.promise { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px 28px; margin: 0; padding: 0; list-style: none; }
+.promise li { border-left: 3px solid var(--vermilion); padding-left: 14px; font-size: .95rem; min-width: 0; }
+.promise b { display: block; font-weight: 600; }
+
+/* 連絡 */
+.contact { background: var(--card); border: 1px solid var(--mist); padding: 22px; display: flex; flex-wrap: wrap; gap: 10px 32px; align-items: baseline; }
+.contact code { font-family: ui-monospace, Menlo, monospace; font-size: 1rem; user-select: all; }
+.contact .note { font-size: .85rem; color: var(--muted); margin: 0; }
+
+/* 下層ページ（規約など） */
+.doc .wrap { max-width: 760px; padding-block: 40px 64px; }
+.doc h1 { font-family: var(--display); font-weight: 500; font-size: 1.6rem; margin: 0 0 18px; }
+.doc h2 { font-size: 1.05rem; margin: 2rem 0 .4rem; }
+.doc p { margin: 0 0 .6em; }
+
+/* フッター */
+.site-foot { border-top: 1px solid var(--mist); color: var(--muted); font-size: .85rem; }
+.site-foot .wrap { padding-block: 22px 30px; display: flex; flex-wrap: wrap; gap: 8px 22px; justify-content: space-between; }
+.site-foot nav { display: flex; flex-wrap: wrap; gap: 6px 18px; }
+.site-foot a { color: var(--muted); }
+@media (prefers-reduced-motion: no-preference) { a { transition: color .15s; } }
