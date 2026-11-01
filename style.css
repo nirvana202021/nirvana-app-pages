@@ -73,7 +73,7 @@ section > .en { font-size: .8rem; letter-spacing: .18em; text-transform: upperca
 }
 
 /* 事業カード */
-.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; }
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(215px, 1fr)); gap: 18px; }
 .card { background: var(--card); border: 1px solid var(--mist); padding: 22px 22px 20px; min-width: 0; }
 .card h3 { font-family: var(--display); font-weight: 500; font-size: 1.12rem; margin: 0 0 4px; }
 .card .en { font-size: .74rem; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin: 0 0 12px; }
